@@ -1,4 +1,4 @@
-package com.hema.model;
+package model;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,6 +9,9 @@ public class Cohort {
     private int cohortId;
     private String cohortName;
     private String duration;
+
+    public Cohort(String javaDeveloper, String s) {
+    }
 
     public int getCohortId() {
         return cohortId;

@@ -1,7 +1,6 @@
-package com.hema.model;
+package model;
 
 import jakarta.persistence.*;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
@@ -16,49 +15,20 @@ public class Teacher implements Serializable {
     private int teacherId;
     private String salary;
     private String teacherName;
-    // @OneToOne(cascade = CascadeType.ALL)
-// private Address address;
+
     @ManyToMany(targetEntity = Cohort.class)
     private Set<Cohort> cohort;
 
-    public Set<Cohort> getCohort() {
-        return cohort;
+
+    public Teacher() {
     }
 
-    public void setCohort(Set<Cohort> cohort) {
+    public Teacher(String salary, String teacherName, Set<Cohort> cohort) {
+        this.salary = salary;
+        this.teacherName = teacherName;
         this.cohort = cohort;
     }
 
-    //public Address getAddress() {
-// return address;
-// }
-// public void setAddress(Address address) {
-// this.address = address;
-// }
-//    public Teacher(String salary, String teacherName, Set<Cohort> cohort) {
-//        this.salary = salary;
-//        this.teacherName = teacherName;
-//    }
-//
-//    public Teacher(String salary, String teacherName) {
-//        super();
-//        this.salary = salary;
-//        this.teacherName = teacherName;
-//    }
-
-    public Teacher() {
-
-    }
-
-    public Teacher(String salary, String teacherName, Department department) {
-        this.salary = salary;
-        this.teacherName = teacherName;
-    }
-
-    public Teacher(String salary, String teacherName) {
-        this.salary = salary;
-        this.teacherName = teacherName;
-    }
 
     public int getTeacherId() {
         return teacherId;
@@ -81,6 +51,19 @@ public class Teacher implements Serializable {
     }
 
     public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public Set<Cohort> getCohort() {
+        return cohort;
+    }
+
+    public void setCohort(Set<Cohort> cohort) {
+        this.cohort = cohort;
+    }
+
+    public Teacher(String salary, String teacherName) {
+        this.salary = salary;
         this.teacherName = teacherName;
     }
 }
